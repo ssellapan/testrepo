@@ -1,0 +1,16 @@
+.borderLayout {
+  background: #F0F0F0;
+}
+
+.pageLayoutTitle {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.borderLayoutColumn.mainColumn {
+  background-color: #E8E8E8;
+  border-color: #505050;
+  border-width: 1px;
+  border-style: dotted;
+  padding: 10px;
+}

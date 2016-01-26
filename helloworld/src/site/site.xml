@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Hello World Page Layout Plugin">
+  <bannerLeft>
+    <name>${project.name}</name>
+  </bannerLeft>
+
+  <skin>
+    <groupId>com.polopoly.extensions</groupId>
+    <artifactId>gt-example-plugin-site-skin</artifactId>
+    <version>10.4.0-0e345d8</version>
+  </skin>
+
+  <body>
+    <head>
+      <link rel="stylesheet" href="./css/plugin-site.css" type="text/css" />
+    </head>
+    <menu name="The plugin">
+      <item name="Overview" href="index.html" />
+      <item name="Usage" href="plugin-usage.html" />
+    </menu>
+
+    <menu name="Configuration">
+      <item name="Configuration" href="plugin-config.html" />
+    </menu>
+
+    <menu name="Documentation">
+      <item name="ModelDocs" href="plugin-models.html" />
+    </menu>
+
+    <menu name="Test Reports">
+      <item name="Test results" href="surefire-report.html" />
+    </menu>
+
+    <menu name="Detailed Project Information" ref="reports"/>
+
+  </body>
+</project>

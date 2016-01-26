@@ -1,0 +1,12 @@
+Description
+
+  ${project.description}
+  
+
+Version
+
+  ${project.version}
+
+Author
+
+  {{{${project.organization.url}} ${project.organization.name}}}

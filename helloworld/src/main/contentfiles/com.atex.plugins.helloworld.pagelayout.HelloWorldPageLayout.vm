@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+
+    #if ($m.context.page.content.disallowIndexing)
+      <meta name="robots" content="noindex">
+      <meta name="robots" content="ACAP disallow-index">
+    #else
+      <meta name="robots" content="index">
+      <meta name="robots" content="ACAP allow-index">
+    #end
+
+    #if($m.local.title)
+        <meta name="title" content="$m.local.title">
+        <meta name="DC.title" content="$m.local.title">
+    #end
+
+    #if($m.local.author)
+        <meta name="author" content="$m.local.author">
+        <meta name="DC.creator" content="$m.local.author">
+    #end
+
+    #if($m.local.keywords)
+      <meta name="keywords" content="$m.local.keywords">
+      <meta name="DC.subject" content="$m.local.keywords">
+    #end
+ 
+    #if($m.local.locations)
+      <meta name="DC.coverage.spatial" content="$m.local.locations">
+    #end
+
+    #if ($content.metadescription.value)
+      <meta name="description" content="$content.metadescription.value">
+    #end
+
+    ## Set html title to site name + page name (if not equal, like is the case at the top level)
+    #set($htmlTitle = $m.context.site.bean.name)
+    #if($htmlTitle != $m.context.page.bean.name)
+      #set($htmlTitle = $m.context.page.bean.name + " - " + $htmlTitle)
+    #end
+    #if($m.local.title != $m.context.page.bean.name)
+      #set($htmlTitle = $m.local.title + " - " + $htmlTitle)
+    #end
+
+    <title>$htmlTitle</title>
+
+    ## Place css here
+    <link rel="stylesheet" type="text/css" href="/css/commons/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/commons/layout.css">
+    <link rel="stylesheet" type="text/css" href="/css/greenfield/threecol.css">
+    <link rel="stylesheet" type="text/css" href="/css/greenfield/ui_green.css">
+    <link rel="stylesheet" type="text/css" href="/css/greenfield/topborder_c.css">
+    <link rel="stylesheet" type="text/css" href="/css/greenfield/ui_tabs.css">
+    <link rel="stylesheet" type="text/css" href="/css/greenfield/poll.css">
+    <link rel="stylesheet" type="text/css" href="/css/greenfield/membership.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.lightbox-0.4.css" media="screen">
+    ## Override with plugin css
+    <link rel="stylesheet" type="text/css" href="#file({'contentId': $filesContentId, 'filename':'com.atex.plugins.helloworld.pagelayout.HelloWorldPageLayout.css', '':''})" />
+
+    ## Place js library here
+    <script type="text/javascript" src="/js/yui/utilities.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui-core-1.5.packed.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui-tabs-1.5.packed.js"></script>
+    <script type="text/javascript" src="/js/swfobject.js"></script>
+    <script type="text/javascript" src="/js/poll.js"></script>
+
+    ## Generic polopoly stuff (uses jQuery)
+    <script type="text/javascript" src="/js/jquery.polopoly.js"></script>
+
+    ## Membership (uses jQuery)
+    <script type="text/javascript" src="/js/jquery.validate-1.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/membership.js"></script>
+    <script type="text/javascript" src="/js/blog.js"></script>
+
+    ## Lightbox image gallery (uses jQuery)
+    <script type="text/javascript" src="/js/jquery.lightbox-0.4.min.js"></script>
+
+    <script type="text/javascript">
+        <!--
+        jQuery(document).ready(function() {
+            window.pageLoaded=true
+        });
+        //-->
+    </script>
+
+    ## Render stylesheet links
+    #foreach($stylesheetContentId in $m.context.page.layout.stylesheets)
+      <link rel="stylesheet" type="text/css" href="#link({"contentId": $stylesheetContentId, 'htmlEncodeLink': 'true', "":""})">
+    #end
+
+    <!--[if IE 7]>
+      <link rel="stylesheet" type="text/css" href="/css/commons/ie7fixes.css">
+    <![endif]-->
+
+    ## Render feed links
+    #foreach($rssFeedId in $m.context.page.layout.feeds)
+      #render({"contentId": $rssFeedId, "params": {"mode": "link", "":""}, "":""})
+    #end
+
+    ## Include system header for preview related resources
+    #render({"outputTemplate": "p.siteengine.layout.Header.ot", "":""})
+
+  </head>
+  <body>
+
+    <div class="borderLayout">
+      #set($m.stack.colwidth = "1007")
+      <div class="borderLayoutColumn mainColumn">
+
+        ## Render article (or other type of content after most specific page, like e.g. an element) if present in path
+        #if($m.context.page.pathAfterPage.size() > 0)
+          #render({"content": $m.context.page.pathAfterPage.get(0), "params":{"view":"article"}, "":""})
+        #end
+
+        ## Title of Hello World Page Layout
+        <div class="pageLayoutTitle">$!content.pagelayoutTitle.value</div>
+
+        #render({"content": $content.main, "":""})
+
+        &nbsp;
+      </div>
+
+    </div>
+
+    ## Place for footer here. For dynamic content, create a footer slot and render it here.
+
+    <!-- js -->
+    <script type="text/javascript" src="/js/site-min.js"></script>
+    <!-- /js -->
+
+    ## Log statistics (if not in preview mode)
+    <div>
+      #if(!$m.request.preview.inPreviewMode)
+        #log({"statisticsContext": $m.request.statisticsContext, "":""})
+      #end
+    </div>
+  </body>
+</html>

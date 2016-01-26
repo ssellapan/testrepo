@@ -1,0 +1,25 @@
+Usage
+
+* Create New Site with Hello World Page Layout
+
+[images/howto-1.png]
+
+  At CmGui, expand Root Department and then expand SiteEngine
+
+  Click on Sites
+
+[images/howto-2.png]
+
+  Click Create button to create new site
+
+[images/howto-3.png]
+
+  Enter site name, select "Hello World Page Layout", replace the Page Layout Title (optional), click Insert.
+
+  Click Save & View
+
+* Output
+
+  The output look like this
+
+[images/output-1.png]

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch xmlns="http://www.polopoly.com/polopoly/cm/xmlio">
+  <content>
+    <metadata>
+      <contentid>
+        <major>InputTemplate</major>
+        <externalid>com.atex.plugins.helloworld.pagelayout.HelloWorldPageLayout</externalid>
+      </contentid>
+    </metadata>
+  </content>
+</batch>
