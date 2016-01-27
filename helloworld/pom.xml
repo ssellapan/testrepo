@@ -61,13 +61,14 @@
 
   <distributionManagement>
     <repository> 
-      <id>bellmedia-releases</id> 
+      <id>development</id> 
       <url>http://localhost:8081/nexus/content/repositories/releases</url> 
     </repository>
   </distributionManagement>
 
   <scm>
     <developerConnection>scm:git:https://github.com/ssellapan/testrepo/</developerConnection>
+    <tag>HEAD</tag>
   </scm>
 
   <pluginRepositories>
@@ -86,7 +87,7 @@
     </repository>
     
         <repository>
-            <id>bellmedia-releases</id>
+            <id>development</id>
             <url>http://localhost:8081/nexus/content/repositories/releases</url>
         </repository>
   </repositories>
