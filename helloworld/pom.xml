@@ -68,7 +68,6 @@
 
   <scm>
     <developerConnection>scm:git:https://github.com/ssellapan/testrepo/</developerConnection>
-    <tag>v0.1</tag>
   </scm>
 
   <pluginRepositories>
